@@ -1,0 +1,36 @@
+1. Danh sách các hàm phục vụ cho việc chèn CSS trong WordPress:
+
+wp_register_style
+wp_deregister_style
+wp_enqueue_style
+wp_dequeue_style
+wp_style_is
+wp_add_inline_style
+
+2. Danh sách các hàm phục vụ cho việc chèn JavaScript trong WordPress:
+
+wp_register_script
+wp_deregister_script
+wp_enqueue_script
+wp_dequeue_script
+wp_script_is
+wp_localize_script
+
+3. Các action hook phục vụ cho việc chèn CSS và JavaScript trong WordPress:
+
+wp_enqueue_scripts
+wp_print_scripts
+wp_print_styles
+admin_enqueue_scripts
+admin_print_scripts
+admin_print_styles
+login_enqueue_scripts
+
+Trong danh sách các hàm bên trên, các bạn sẽ chia thành các nhóm công việc như sau: 
+nhóm đăng ký (register) và nhóm đưa vào hàng đợi để xuất (enqueue).
+
+Khi gọi các hàm này thì bạn phải đặt trong đúng action hook do WordPress đưa ra. 
+Thông thường, bạn sẽ đặt các hàm của bạn trong action wp_enqueue_scripts đối với 
+ngoài front-end, dùng action admin_enqueue_scripts cho trang bên trong admin, 
+dùng action login_enqueue_scripts đối với các trang thuộc về login (bao gồm đăng nhập,
+đăng ký, khôi phục mật khẩu).

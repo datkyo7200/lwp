@@ -1,0 +1,10 @@
+Hàm add_action() để móc callback của mình vào cái action hook cần cho nó móc vào.
+
+Cấu trúc sử dụng của hàm add_action() là:
+
+add_action( $hook, $function_to_add, $priority, $accepted_args );
+
+$hook (string) (bắt buộc) – Tên hook cần móc vào.
+$function_to_add (callback) (bắt buộc) – Tên hàm cần sử dụng.
+$priority (integer) (tuỳ chọn) – Mức độ ưu tiên của hàm này thực thi với các hàm khác nếu nó có chung một hook. Mặc định là 10, số càng nhỏ thì nó càng thực hiện sớm hơn.
+$accepted_args (integer) (tuỳ chọn) – Số lượng tham số được sử dụng trong hàm callback. Mặc định là 1.

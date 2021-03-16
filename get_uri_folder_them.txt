@@ -1,0 +1,34 @@
+1. get_template_directory_uri()
+Hàm này trả về đường dẫn đến theme hiện tại của bạn (không có dấu ‘/’), nếu bạn đang sử dụng 1 theme con bên trong, thì nó sẽ trả về theme cha mẹ.
+Bạn có thể dùng để khai báo stylesheet hoặc javascipt cho theme
+<?php
+function my_scripts_method() {
+	wp_enqueue_script(
+		'custom_script',
+		get_template_directory_uri() . '/js/custom_script.js',
+		array('jquery')
+	);
+}
+add_action('wp_enqueue_scripts', 'my_scripts_method');
+?>
+
+2. get_stylesheet_directory_uri()
+Kết quả trả về cũng tương tự như hàm get_template_directory_uri()
+
+3. get_stylesheet_uri()
+Kết quả trả về là đường dẫn đến thẳng file style.css của theme
+
+4. get_theme_root_uri()
+Kết quả trả về là đường dẫn đến thư mục wp-content/theme
+
+5. get_theme_root()
+Trả về đường dẫn tuyệt đối đến wp-content\theme
+
+6. get_theme_roots()
+Trả về list thư mục các theme
+
+7. get_stylesheet_directory()
+Trả về đường dẫn tuyệt đối đến thư mục chứ file style.css
+
+8 .get_template_directory()
+Trả về đường dẫn tuyệt đối đến theme hiện tại, thường thì kết quả tương tự như get_stylesheet_directory()
