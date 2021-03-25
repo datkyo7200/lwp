@@ -1,13 +1,25 @@
-.top-bar{
-    background-color: red;
+.top-bar {
+    background-color: #ff0000;
     height: 70px;
 }
-.social-media-icons{
 
-}
-.search{
-
-}
-.main-menu ul li{
+.main-menu ul li,
+.footer-menu ul li {
     display: inline;
+    padding: 10px;
+}
+
+.main-menu ul li a,
+.footer-menu ul li a {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+.wp-post-image {
+    float: left;
+    margin: 0 15px 10px 0;
+}
+
+.blog article {
+    display: inline-block;
 }

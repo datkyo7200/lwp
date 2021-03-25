@@ -1,9 +1,17 @@
 <?php
-    get_header();
+
+/*
+Template Name: General Template
+*/
 ?>
+
+
+<?php
+    get_header();
+ ?>
+
 <img class="img-fluid" src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>"
     height="<?php echo get_custom_header()->height; ?>" alt="" />
-
 <div class="content-area">
     <main>
         <section class="slide">
@@ -19,7 +27,6 @@
                         Sidebar
                     </aside>
                     <div class="news col-md-9">
-
                         <?php
                         //If there are my posts
                             if (have_posts()):
@@ -30,7 +37,10 @@
                             // echo "<pre>";
                             // print_r($post);
                             // echo "</pre>";
-                            get_template_part('template-parts/content');
+                        ?>
+                        <p><?php echo the_title(); ?></p>
+                        <p><?php the_content(); ?> </p>
+                        <?php
                                 endwhile;
                             else:
                                 ?>
@@ -38,6 +48,7 @@
                         <?php
                             endif;
                         ?>
+                        <p>Day la trang general template dung chung</p>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn WP</title>
     <?php wp_head(); ?>
+    <?php
+    // showArray($data){
+    //     echo "<pre>";
+    //     print_r($data);
+    //     echo "</pre>";
+    // }
+    // phpinfo();
+    ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -35,6 +43,4 @@
                     </div>
                 </div>
             </div>
-
-        </section>
     </header>

@@ -1,0 +1,35 @@
+$text-red: #ff0000;
+$text-white: #fff;
+.top-bar {
+    background-color: $text-red;
+    height: 70px;
+}
+
+.social-media-icons {}
+
+.search {}
+
+.main-menu,
+.footer-menu {
+    ul {
+        li {
+            display: inline;
+            padding: 10px;
+            a {
+                color: $text-red;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.wp-post-image {
+    float: left;
+    margin: 0 15px 10px 0;
+}
+
+.blog {
+    article {
+        display: inline-block;
+    }
+}

@@ -7,9 +7,26 @@ function load_scripts()
 }
 
 add_action('wp_enqueue_scripts', 'load_scripts');
-register_nav_menus(
-    array(
-    'my_main_menu' =>'Main Menu',
-    // 'second_menu'=>'Second description'
-),
-);
+
+
+//Main configuration func
+function learnwp_config()
+{
+    // registering our menus
+    register_nav_menus(
+        array(
+            'my_main_menu' =>'Main Menu',
+            'footer_menu'  =>'Footer Menu',
+            // 'second_menu'=>'Second description'
+        ),
+    );
+    $args_header = array(
+                    'height' => 225,
+                    'width' => 1920,
+                );
+    add_theme_support('custom-header', $args_header);
+    add_theme_support('post-thumbnails');
+    add_theme_support('post-formats');
+}
+
+add_action('after_setup_theme', 'learnwp_config', 0);
