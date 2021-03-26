@@ -1,0 +1,121 @@
+NOTE WP
+Đọc document ở
+https://developer.wordpress.org/
+
+--------------LOOP-----------------
+Dùng have_posts()
+Xác định xem truy vấn WordPress hiện tại có bài đăng để lặp lại hay không. (bool) True if posts are available, false if end of the loop.
+$wp_query câu lệnh đề xem tất cả thông tin trong page
+$posts là câu lênh để xem thông tin về bài viết.
+
+the_title();
+the_post_thumbnail('medium');
+get_the_date();
+the_category();
+the_tags('Tags:', ',');
+the_content();
+get_post_format();
+
+
+-----------------SUPPORT THEME-----------------------
+add_theme_support()  là một hàm để khai báo tính năng mà theme có hỗ trợ.
+Phải được gọi trong tệp functions.php của chủ đề để hoạt động. Nếu được gắn vào hook, nó phải là 'after_setup_theme' . Các 'init' móc có thể là quá muộn đối với một số tính năng. 
+vd: 
+function theme_setup() {
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'custom-logo', array(
+         'height' => 480,
+         'width'  => 720,
+     ) );
+    add_theme_support('custom-header', $args_header);
+    add_theme_support('post-thumbnails');
+    add_theme_support('post-formats', array( 'video', 'image' ));
+}
+add_action( 'after_setup_theme', 'theme_setup' );
+
+do_action ('after_setup_theme')
+Chạy sau khi chủ đề được tải.
+Móc này được gọi trong mỗi lần tải trang, sau khi chủ đề được khởi tạo. Nó thường được sử dụng để thực hiện các hành động thiết lập, đăng ký và init cơ bản cho một chủ đề.
+
+------------------NAVBAR------------------
+wp_nav_menu () là hàm dùng để khai báo navbar
+vd:
+wp_nav_menu(array('theme_location'=>'my_main_menu'))
+
+----------------HANDLE IMAGE-------------
+Hàm header_image() để lấy hình ảnh ở header ra
+vd:
+Đầu tiên khai báo custom-header trong func
+add_theme_support('custom-header', $args_header);
+<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>"
+    height="<?php echo get_custom_header()->height; ?>" alt="">
+
+Hoặc có thể dùng hàm the_custom_header_markup() hàm này cũng để lấy hình ảnh ở header ra.
+
+the_post_thumbnail() Là hàm hiển thị hình thu nhỏ của bài đăng.
+Đầu tiên khai báo post-thumbnails trong func
+Dưới đây là kích thước hình ảnh muốn lấy ra
+the_post_thumbnail( 'thumbnail' );     // Thumbnail (150 x 150 hard cropped)
+the_post_thumbnail( 'medium' );        // Medium resolution (300 x 300 max height 300px)
+the_post_thumbnail( 'medium_large' );  // Medium Large (added in WP 4.4) resolution (768 x 0 infinite height)
+the_post_thumbnail( 'large' );         // Large resolution (1024 x 1024 max height 1024px)
+the_post_thumbnail( 'full' );          // Full resolution (original size uploaded)
+
+------------HANDLE PART TEMPLATE-----------
+get_template_part ( string  $slug , string  $name  =  null , array  $args  =  array ()  )
+Hàm này có tác dụng load một phần template nhỏ nào đó vào một template khác một cách đơn giản. Ở đây không phải footer, header, sidebar vì nó có các hàm khác hỗ trợ rồi.
+$slug( string ) (Bắt buộc) Tên slug cho mẫu chung.
+$name( string ) (Tùy chọn) Tên của mẫu chuyên dụng.
+Giá trị mặc định: null
+$args( mảng ) (Tùy chọn) Các đối số bổ sung được truyền vào mẫu.
+Giá trị mặc định: array ()
+
+------------------FORMAT------------------
+get_post_format();
+
+
+-------------------SIDEBAR-----------
+register_sidebar ( array | string  $args  =  array ()  )
+Tạo định nghĩa cho một thanh bên và trả về ID.
+add_action('widgets_init','name func')
+is_active_sidebar ( string | int  $ index  )
+Xác định xem một thanh bên có chứa các tiện ích con hay không.
+$index ( string | int ) (Bắt buộc) Tên, id hoặc số thanh bên cần kiểm tra.
+dynamic_sidebar ( int | string  $ index  =  1  )
+Hiển thị thanh bên động.
+$ index ( int | string ) (Tùy chọn) Chỉ mục, tên hoặc ID của thanh bên động. Giá trị mặc định: 1
+
+get_sidebar ( string  $ name  =  null , array  $ args  =  array ()  )
+Hàm load mẫu thanh bên.
+$ name( string ) (Tùy chọn) Tên của thanh bên chuyên dụng. Giá trị mặc định: null
+
+-------------------WP_QUERY---------------
+
+wp_reset_postdata ()
+Sau khi lặp qua một truy vấn riêng biệt, hàm này khôi phục $post global về bài đăng hiện tại trong truy vấn chính.
+
+
+-----------------COMMENTS----------------
+
+comments_template ( string  $file  =  '/comments.php' , bool  $own_comments  =  false  )
+Tải mẫu nhận xét được chỉ định trong tệp $.
+$file( string ) (Tùy chọn) Tệp cần tải. Giá trị mặc định: '/comments.php'
+
+
+comments_open( int|WP_Post $post_id = null )
+Xác định xem bài viết hiện tại có được mở để nhận xét hay không.
+
+get_comments_number( int|WP_Post $post_id )
+Lấy số lượng bình luận mà một bài đăng có.
+
+
+----------------SEARCH----------------
+
+get_search_form( array $args = array() )
+
+Hiển thị biểu mẫu tìm kiếm.
+$args( array) (Optional) Mảng đối số hiển thị.
+'echo'
+(bool) Có lặp lại hay trả về biểu mẫu hay không. Mặc định đúng.
+'aria_label'
+(string) cho biểu mẫu tìm kiếm. Hữu ích để phân biệt nhiều biểu mẫu tìm kiếm trên cùng một trang và cải thiện khả năng truy cập.
