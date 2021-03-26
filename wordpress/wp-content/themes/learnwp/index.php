@@ -6,18 +6,10 @@
 
 <div class="content-area">
     <main>
-        <section class="slide">
-            Slide
-        </section>
-        <section class="services">
-            Services
-        </section>
         <section class="middle-area">
             <div class="container">
                 <div class="row">
-                    <aside class="sidebar col-md-3">
-                        Sidebar
-                    </aside>
+
                     <div class="news col-md-9">
 
                         <?php
@@ -30,7 +22,7 @@
                             // echo "<pre>";
                             // print_r($post);
                             // echo "</pre>";
-                            get_template_part('template-parts/content');
+                            get_template_part('template-parts/content', get_post_format());
                                 endwhile;
                             else:
                                 ?>
@@ -39,6 +31,9 @@
                             endif;
                         ?>
                     </div>
+                    <aside class="sidebar col-md-3 h-100">
+                        <?php get_sidebar('blog') ?>
+                    </aside>
                 </div>
             </div>
         </section>
