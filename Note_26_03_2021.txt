@@ -164,6 +164,24 @@ get_language_attributes( string $doctype = 'html' ) Nhận các thuộc tính ng
 
 bloginfo( string $show = '' ) Hiển thị thông tin về trang web hiện tại.
 
+
+-------------------- PLUGIN FREE ----------------
+
+Show Current Template Một plugin WordPress hiển thị tên tệp mẫu hiện tại, tên chủ đề hiện tại và tên tệp mẫu được bao gồm trong thanh công cụ
+
+Responsive WordPress Slider của MotoPress là một giải pháp dễ sử dụng để tạo các trang trình bày đẹp với các hiệu ứng hình ảnh tuyệt vời. 
+Giao diện kéo và thả trực quan, điều hướng vuốt và bố cục đáp ứng giúp bạn tạo các trang trình bày mà không cần chạm vào mã
+motoPressSlider('name-slider') hàm này dùng để get slider motoPress
+
+Contact Form 7 có thể quản lý nhiều form liên hệ, ngoài ra bạn có thể tùy chỉnh form và nội dung email một cách linh hoạt với các markup đơn giản. 
+Form hỗ trợ Ajax, CAPTCHA, Akismet và nhiều nữa.
+
+Social Icons Widget & Block giúp bạn thêm nhanh các biểu tượng có liên kết đến hồ sơ của bạn từ các mạng xã hội khác nhau. Plugin bao gồm một số bộ biểu tượng, 
+mang lại cho bạn khả năng sử dụng tiện ích con hơn là chỉ liên kết đến các hồ sơ mạng xã hội của bạn.
+
+WP Responsive Menu là một plugin đơn giản cho phép bạn thêm menu đáp ứng có thể tùy chỉnh cao vào bất kỳ trang web WordPress nào ngay lập tức và việc tùy chỉnh 
+có thể được thực hiện trực tiếp từ trang cài đặt mà không cần viết mã.
+
 -------------------- COMMON --------------------
 
 post_class( string|string[] $class = '', int|WP_Post $post_id = null ) Là hàm hiển thị các lớp cho phần tử vùng chứa bài đăng.
@@ -184,3 +202,6 @@ get_home_url( int|null $blog_id = null, string $path = '', string|null $scheme =
 
 the_widget( string $widget, array $instance = array(), array $args = array() ) Xuất một widget tùy ý dưới dạng thẻ mẫu.
 
+get_template_directory() Truy xuất đường dẫn thư mục mẫu cho chủ đề hiện tại.
+
+get_theme_mod( string $name, string|false $default = false ) Truy xuất giá trị sửa đổi chủ đề cho chủ đề hiện tại.

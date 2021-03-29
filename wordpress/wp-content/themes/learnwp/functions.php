@@ -1,4 +1,7 @@
 <?php
+//Requiring Theme Custome
+require get_template_directory() . '/inc/customizer.php';
+
 function load_scripts()
 {
     wp_enqueue_script('bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), '4.0.0', true);
@@ -28,6 +31,10 @@ function learnwp_config()
     add_theme_support('post-thumbnails');
     add_theme_support('post-formats', array( 'video', 'image' ));
     add_theme_support('title-tag'); // Sử dụng để khai báo title
+    add_theme_support('custom-logo', array(
+        'height' => 110,
+        'width'=> 200
+    ));
 }
 
 add_action('after_setup_theme', 'learnwp_config', 0);
@@ -83,6 +90,17 @@ function learnwp_sidebars()
             'name' => 'Service 3',
             'id' => 'services-3',
             'description' => 'Third Services Area. ',
+            'before_widget' => '<div class="widget-wrapper">',
+            'after_widget' => '</div>',
+            'before_title' => '<h2 class="widget-title">',
+            'after_title' => '</h2>'
+        )
+    );
+    register_sidebar(
+        array(
+            'name' => 'Social Media Icons',
+            'id' => 'social-media',
+            'description' => 'Social Media Icons Widget Area. Drag and drop your widgets here.',
             'before_widget' => '<div class="widget-wrapper">',
             'after_widget' => '</div>',
             'before_title' => '<h2 class="widget-title">',

@@ -2,7 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                Copyright 2021 - Learn WP
+                <p><?php echo get_theme_mod('set_copyright'); ?>
+                </p>
             </div>
             <div class="col-md-7">
                 <nav class="footer-menu text-right">

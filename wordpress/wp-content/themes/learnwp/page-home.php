@@ -3,7 +3,8 @@
     <main>
         <section class="slide">
             <div class="container">
-                <div class="row">Slide</div>
+                <div class="row"><?php motoPressSlider("home-slider") ?>
+                </div>
             </div>
         </section>
         <section class="services">
@@ -109,9 +110,16 @@
             </div>
         </section>
         <section class="map">
-            <div class="container">
-                <div class="row">Map</div>
-            </div>
+            <?php
+
+            $key = get_theme_mod('set_map_apikey');
+            $address = urlencode(get_theme_mod('set_map_address'));
+
+            ?>
+            <iframe width="100%" height="350" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=<?php echo $key; ?>&q=<?php echo $address; ?>&zoom=15"
+                allowfullscreen>
+            </iframe>
         </section>
     </main>
 </div>
