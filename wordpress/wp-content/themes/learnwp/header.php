@@ -1,10 +1,11 @@
-<html lang="en">
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
 
 <head>
-    <meta charset="UTF-8">
+    <meta <?php bloginfo('charset'); ?>>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn WP</title>
+    </title>
     <?php wp_head(); ?>
     <?php
     // showArray($data){
@@ -22,7 +23,8 @@
             <div class="container">
                 <div class="row">
                     <div class="social-media-icons col-xl-̣9 col-md-7 col-sm-6 col-6">Social Icons</div>
-                    <div class="search col-xl-3 col-md-5 col-sm-6 col-6 text-right"><?php get_search_form(); ?></div>
+                    <div class="search col-xl-3 col-md-5 col-sm-6 col-6 text-right"><?php get_search_form(); ?>
+                    </div>
                 </div>
             </div>
         </section>

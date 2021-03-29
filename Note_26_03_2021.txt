@@ -3,6 +3,7 @@ NOTE WP
 https://developer.wordpress.org/
 
 --------------LOOP-----------------
+
 Dùng have_posts()
 Xác định xem truy vấn WordPress hiện tại có bài đăng để lặp lại hay không. (bool) True if posts are available, false if end of the loop.
 $wp_query câu lệnh đề xem tất cả thông tin trong page
@@ -17,7 +18,8 @@ the_content();
 get_post_format();
 
 
------------------SUPPORT THEME-----------------------
+----------------- SUPPORT THEME -----------------------
+
 add_theme_support()  là một hàm để khai báo tính năng mà theme có hỗ trợ.
 Phải được gọi trong tệp functions.php của chủ đề để hoạt động. Nếu được gắn vào hook, nó phải là 'after_setup_theme' . Các 'init' móc có thể là quá muộn đối với một số tính năng. 
 vd: 
@@ -37,12 +39,13 @@ do_action ('after_setup_theme')
 Chạy sau khi chủ đề được tải.
 Móc này được gọi trong mỗi lần tải trang, sau khi chủ đề được khởi tạo. Nó thường được sử dụng để thực hiện các hành động thiết lập, đăng ký và init cơ bản cho một chủ đề.
 
-------------------NAVBAR------------------
+------------------ NAVBAR ------------------
 wp_nav_menu () là hàm dùng để khai báo navbar
 vd:
 wp_nav_menu(array('theme_location'=>'my_main_menu'))
 
-----------------HANDLE IMAGE-------------
+---------------- HANDLE IMAGE -------------
+
 Hàm header_image() để lấy hình ảnh ở header ra
 vd:
 Đầu tiên khai báo custom-header trong func
@@ -61,7 +64,8 @@ the_post_thumbnail( 'medium_large' );  // Medium Large (added in WP 4.4) resolut
 the_post_thumbnail( 'large' );         // Large resolution (1024 x 1024 max height 1024px)
 the_post_thumbnail( 'full' );          // Full resolution (original size uploaded)
 
-------------HANDLE PART TEMPLATE-----------
+------------ HANDLE PART TEMPLATE -----------
+
 get_template_part ( string  $slug , string  $name  =  null , array  $args  =  array ()  )
 Hàm này có tác dụng load một phần template nhỏ nào đó vào một template khác một cách đơn giản. Ở đây không phải footer, header, sidebar vì nó có các hàm khác hỗ trợ rồi.
 $slug( string ) (Bắt buộc) Tên slug cho mẫu chung.
@@ -70,11 +74,13 @@ Giá trị mặc định: null
 $args( mảng ) (Tùy chọn) Các đối số bổ sung được truyền vào mẫu.
 Giá trị mặc định: array ()
 
-------------------FORMAT------------------
-get_post_format();
+------------------ FORMAT ------------------
+
+get_post_format( int|WP_Post|null $post = null ) Truy xuất slug định dạng cho một bài đăng
 
 
--------------------SIDEBAR-----------
+------------------- SIDEBAR ----------------
+
 register_sidebar ( array | string  $args  =  array ()  )
 Tạo định nghĩa cho một thanh bên và trả về ID.
 add_action('widgets_init','name func')
@@ -89,13 +95,13 @@ get_sidebar ( string  $ name  =  null , array  $ args  =  array ()  )
 Hàm load mẫu thanh bên.
 $ name( string ) (Tùy chọn) Tên của thanh bên chuyên dụng. Giá trị mặc định: null
 
--------------------WP_QUERY---------------
+------------------- WP_QUERY ---------------
 
 wp_reset_postdata ()
 Sau khi lặp qua một truy vấn riêng biệt, hàm này khôi phục $post global về bài đăng hiện tại trong truy vấn chính.
 
 
------------------COMMENTS----------------
+----------------- COMMENTS ----------------
 
 comments_template ( string  $file  =  '/comments.php' , bool  $own_comments  =  false  )
 Tải mẫu nhận xét được chỉ định trong tệp $.
@@ -109,13 +115,72 @@ get_comments_number( int|WP_Post $post_id )
 Lấy số lượng bình luận mà một bài đăng có.
 
 
-----------------SEARCH----------------
+------------------- SEARCH -------------------
 
 get_search_form( array $args = array() )
-
 Hiển thị biểu mẫu tìm kiếm.
 $args( array) (Optional) Mảng đối số hiển thị.
 'echo'
 (bool) Có lặp lại hay trả về biểu mẫu hay không. Mặc định đúng.
 'aria_label'
 (string) cho biểu mẫu tìm kiếm. Hữu ích để phân biệt nhiều biểu mẫu tìm kiếm trên cùng một trang và cải thiện khả năng truy cập.
+page searchform để tạo ra trang tìm kiếm.
+
+get_search_query( bool $escaped = true ) Lấy nội dung của biến truy vấn WordPress tìm kiếm.
+
+------------------- PANINATION ------------------
+
+previous_posts_link( string $label = null ) Hiển thị liên kết trang bài viết trước.
+
+previous_post_link() Hiển thị liên kết bài viết trước đó liền kề với bài viết hiện tại.
+
+get_previous_posts_link( string $label = null ) Truy xuất liên kết trang bài viết trước đó.
+
+next_posts_link( string $label = null, int $max_page ) Hiển thị liên kết trang bài viết tiếp theo.
+
+next_post_link() Hiển thị liên kết bài đăng tiếp theo liền kề với bài viết hiện tại.
+
+get_next_posts_link( string $label = null, int $max_page ) Truy xuất liên kết trang bài viết tiếp theo.
+
+the_posts_pagination( array $args = array() ) Hiển thị điều hướng được phân trang đến nhóm bài đăng tiếp theo / trước đó, nếu có.
+
+get_the_posts_pagination( array $args = array() ) Truy xuất một điều hướng được phân trang đến nhóm bài đăng tiếp theo / trước đó, nếu có.
+
+
+---------- CREATE ARCHIVE,CATEGORY,AUTHOR AND TAGS -----------
+
+Đầu tiên tạo ra file archive.php và tạo trong template-parts 1 file conten-archive đây là file dùng chung cho cả category, author, date và tags.
+Hoặc bạn cũng có thể tạo riêng ra từng file: category, tag.pgp,date.php , author.php.
+
+the_archive_title( string $before = '', string $after = '' ) Hiển thị tiêu đề kho lưu trữ dựa trên đối tượng được truy vấn.
+
+the_archive_description( string $before = '', string $after = '' ) Hiển thị danh mục, thẻ, thuật ngữ hoặc mô tả tác giả.
+
+-------------------- SEO WEBSITE ------------------------------
+
+language_attributes( string $doctype = 'html' ) Hiển thị các thuộc tính ngôn ngữ cho thẻ 'html'.
+
+get_language_attributes( string $doctype = 'html' ) Nhận các thuộc tính ngôn ngữ cho thẻ 'html'.
+
+bloginfo( string $show = '' ) Hiển thị thông tin về trang web hiện tại.
+
+-------------------- COMMON --------------------
+
+post_class( string|string[] $class = '', int|WP_Post $post_id = null ) Là hàm hiển thị các lớp cho phần tử vùng chứa bài đăng.
+
+the_ID() Là hàm hiển thị ID của mục hiện tại trong WordPress Loop.
+
+home_url( string $path = '', string|null $scheme = null ) Truy xuất URL cho trang web hiện tại nơi giao diện người dùng có thể truy cập được.
+
+the_permalink( int|WP_Post $post ) Hiển thị liên kết cố định cho bài viết hiện tại.
+
+has_category( string|int|array $category = '', int|object $post = null ) Kiểm tra xem bài viết hiện tại có bất kỳ danh mục nhất định nào không.
+
+wp_title( string $sep = '&raquo;', bool $display = true, string $seplocation = '' ) Hiển thị hoặc truy xuất tiêu đề trang cho tất cả các lĩnh vực của blog.
+
+esc_html_e( string $text, string $domain = 'default' ) Hiển thị văn bản đã dịch đã được thoát ra ngoài để sử dụng an toàn trong đầu ra HTML.
+
+get_home_url( int|null $blog_id = null, string $path = '', string|null $scheme = null ) Truy xuất URL cho một trang web nhất định nơi giao diện người dùng có thể truy cập được.
+
+the_widget( string $widget, array $instance = array(), array $args = array() ) Xuất một widget tùy ý dưới dạng thẻ mẫu.
+

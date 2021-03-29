@@ -1,7 +1,8 @@
 <?php
     get_header();
 ?>
-<img class="img-fluid" src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>"
+<img class="img-fluid" src="<?php header_image(); ?>"
+    width="<?php echo get_custom_header()->width; ?>"
     height="<?php echo get_custom_header()->height; ?>" alt="" />
 
 <div class="content-area">
@@ -17,13 +18,25 @@
                             if (have_posts()):
                                 //while have posts, show them to us
                                 while (have_posts()): the_post();
-                        ?>
-                        <?php
-                            // echo "<pre>";
-                            // print_r($post);
-                            // echo "</pre>";
-                            get_template_part('template-parts/content', get_post_format());
+                                // echo "<pre>";
+                                // print_r($post);
+                                // echo "</pre>";
+                                get_template_part('template-parts/content', get_post_format());
                                 endwhile;
+                                ?>
+                        <div class="row">
+                            <div class="pages col-md-6 text-left">
+                                <?php
+                                // echo get_previous_posts_link();
+                                previous_posts_link("<< Newer posts"); ?>
+                            </div>
+                            <div class="pages col-md-6 text-right">
+                                <?php
+                                // echo get_next_posts_link();
+                                next_posts_link(">> Older posts"); ?>
+                            </div>
+                        </div>
+                        <?php
                             else:
                                 ?>
                         <p>Khong co noi dung nao duoc hien thi</p>
@@ -44,4 +57,3 @@
 </div>
 <?php
     get_footer();
- ?>

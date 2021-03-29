@@ -10,7 +10,8 @@ Template Name: General Template
     get_header();
  ?>
 
-<img class="img-fluid" src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>"
+<img class="img-fluid" src="<?php header_image(); ?>"
+    width="<?php echo get_custom_header()->width; ?>"
     height="<?php echo get_custom_header()->height; ?>" alt="" />
 <div class="content-area">
     <main>
@@ -38,8 +39,10 @@ Template Name: General Template
                             // print_r($post);
                             // echo "</pre>";
                         ?>
-                        <p><?php echo the_title(); ?></p>
-                        <p><?php the_content(); ?> </p>
+                        <p><?php echo the_title(); ?>
+                        </p>
+                        <p><?php the_content(); ?>
+                        </p>
                         <?php
                                 endwhile;
                             else:
@@ -60,4 +63,3 @@ Template Name: General Template
 </div>
 <?php
     get_footer();
- ?>

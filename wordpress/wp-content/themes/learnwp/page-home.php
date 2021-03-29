@@ -84,10 +84,10 @@
 
                                 $args = array(
                                     'post_type' => 'post',
-                                    'posts_per_page'=> 2,
-                                    'category_not_in'=>  array(9),
-                                    'category_in'=>array(4,8),
-                                    'offset' => 1
+                                    'posts_per_page'=> 2,//So luong image hien thi
+                                    'category_not_in'=>  array(9),// image k dc hien thi
+                                    'category_in'=>array(4,8),//image dc hien thi
+                                    'offset' => 1//Hien thi tu
                                 );
                                 $secondary = new WP_Query($args);
 
@@ -115,4 +115,4 @@
         </section>
     </main>
 </div>
-<?php get_footer(); ?>
+<?php get_footer();

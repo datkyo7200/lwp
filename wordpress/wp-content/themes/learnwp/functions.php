@@ -27,6 +27,7 @@ function learnwp_config()
     add_theme_support('custom-header', $args_header);
     add_theme_support('post-thumbnails');
     add_theme_support('post-formats', array( 'video', 'image' ));
+    add_theme_support('title-tag'); // Sử dụng để khai báo title
 }
 
 add_action('after_setup_theme', 'learnwp_config', 0);
