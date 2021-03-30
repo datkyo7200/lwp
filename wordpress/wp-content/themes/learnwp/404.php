@@ -1,37 +1,36 @@
-<?php
-/**
- * The template for displaying 404 pages (not found)
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
- */
+<?php get_header(); ?>
 
-get_header();
-?>
-<div class="container">
-    <header class="page-header alignwide text-center">
-        <h1 class="page-title"><?php esc_html_e('PAGE NOT FOUND'); ?>
-        </h1>
-        <a href="<?php echo get_home_url(); ?>"
-            class="btn btn-primary text-white">Back To
-            Home</a>
-    </header><!-- .page-header -->
+<img class="img-fluid" src="<?php header_image(); ?>"
+    height="<?php echo get_custom_header()->height; ?>"
+    width="<?php echo get_custom_header()->width; ?>" alt="" />
 
-    <div class="error-404 not-found default-max-width py-5">
-        <div class="page-content">
-            <p><?php esc_html_e('It looks like nothing was found at this location. Maybe try a search?'); ?>
-            </p>
-            <?php get_search_form(); ?>
-            <?php the_widget('WP_Widget_Recent_Posts', array(
-            'title'=>'Latest Posts',
-            'number'=>3));
-            ?>
-        </div><!-- .page-content -->
-    </div><!-- .error-404 -->
+<div class="content-area">
+    <main>
+        <section class="middle-area">
+            <div class="container">
+                <div class="row">
+
+                    <div class="error-404">
+
+                        <header>
+                            <h1><?php _e('Page not found', 'learnwp'); ?>
+                            </h1>
+                            <p><?php _e('Unfortunately, the page you tried to reach does not exist on this site!', 'learnwp'); ?>
+                            </p>
+                        </header>
+
+                        <div class="error">
+                            <p><?php _e('How about doing a search?', 'learnwp'); ?>
+                            </p>
+                            <?php get_search_form(); ?>
+                            <?php the_widget('WP_Widget_Recent_Posts', array( 'title' => __('Latest Posts', 'learnwp') , 'number' => 3 )); ?>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
 </div>
-
-<?php
-get_footer();
+<?php get_footer();

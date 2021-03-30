@@ -3,63 +3,54 @@
 /*
 Template Name: General Template
 */
-?>
 
-
-<?php
-    get_header();
  ?>
 
+<?php get_header(); ?>
+
 <img class="img-fluid" src="<?php header_image(); ?>"
-    width="<?php echo get_custom_header()->width; ?>"
-    height="<?php echo get_custom_header()->height; ?>" alt="" />
+    height="<?php echo get_custom_header()->height; ?>"
+    width="<?php echo get_custom_header()->width; ?>" alt="" />
+
 <div class="content-area">
     <main>
-        <section class="slide">
-            Slide
-        </section>
-        <section class="services">
-            Services
-        </section>
+
         <section class="middle-area">
             <div class="container">
-                <div class="row">
-                    <aside class="sidebar col-md-3">
-                        Sidebar
-                    </aside>
-                    <div class="news col-md-9">
-                        <?php
-                        //If there are my posts
+
+
+                <div class="general-template">
+                    <?php
+
+                            // If there are any posts
                             if (have_posts()):
-                                //while have posts, show them to us
+                                // While have posts, show them to us
                                 while (have_posts()): the_post();
-                        ?>
-                        <?php
-                            // echo "<pre>";
-                            // print_r($post);
-                            // echo "</pre>";
-                        ?>
-                        <p><?php echo the_title(); ?>
-                        </p>
+
+                             ?>
+
+                    <article>
+                        <h2><?php the_title(); ?>
+                        </h2>
                         <p><?php the_content(); ?>
                         </p>
-                        <?php
-                                endwhile;
-                            else:
-                                ?>
-                        <p>Khong co noi dung nao duoc hien thi</p>
-                        <?php
-                            endif;
-                        ?>
-                        <p>Day la trang general template dung chung</p>
-                    </div>
+                    </article>
+
+                    <?php
+                             endwhile;
+                             else:
+                              ?>
+
+                    <p><?php _e('There&rsquo;s nothing yet to be displayed!', 'learnwp'); ?>
+                    </p>
+
+                    <?php endif; ?>
+
                 </div>
+
             </div>
         </section>
-        <section class="map">
-            Map
-        </section>
+
     </main>
 </div>
-<?php
-    get_footer();
+<?php get_footer();

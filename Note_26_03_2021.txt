@@ -182,6 +182,12 @@ mang lại cho bạn khả năng sử dụng tiện ích con hơn là chỉ liê
 WP Responsive Menu là một plugin đơn giản cho phép bạn thêm menu đáp ứng có thể tùy chỉnh cao vào bất kỳ trang web WordPress nào ngay lập tức và việc tùy chỉnh 
 có thể được thực hiện trực tiếp từ trang cài đặt mà không cần viết mã.
 
+TGM Plugin Activation là một thư viện PHP cho phép bạn dễ dàng yêu cầu hoặc đề xuất các plugin cho các chủ đề (và plugin) WordPress của bạn
+
+Gutenberg là gì? Gutenberg là trình soạn thảo văn bản mới ở dạng khối của WordPress và trở thành Editor mặc định từ phiên bản WordPress 5.0.
+
+WP Clone là một cách tuyệt vời để sao lưu, di chuyển hoặc sao chép một trang web WordPress sang một tên miền hoặc máy chủ lưu trữ khác.
+
 -------------------- COMMON --------------------
 
 post_class( string|string[] $class = '', int|WP_Post $post_id = null ) Là hàm hiển thị các lớp cho phần tử vùng chứa bài đăng.
@@ -205,3 +211,5 @@ the_widget( string $widget, array $instance = array(), array $args = array() ) X
 get_template_directory() Truy xuất đường dẫn thư mục mẫu cho chủ đề hiện tại.
 
 get_theme_mod( string $name, string|false $default = false ) Truy xuất giá trị sửa đổi chủ đề cho chủ đề hiện tại.
+
+is_page( int|string|int[]|string[] $page = '' ) Xác định xem truy vấn có dành cho một trang hiện có hay không.
